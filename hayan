@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAYAN — A sustainable lifestyle brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f3f3f3;
+  --black: #1a1a1a;
+  --mid: #888;
+  --border: rgba(0, 0, 0, 0.1);
+  --pistachio: #b4dcc8;
+  --font: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+  --nav-w: 200px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--black);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 48px;
+}
+.hdr-left { display: flex; align-items: center; gap: 20px; }
+.hdr-brand { font-size: 13px; font-weight: 500; letter-spacing: 0.03em; }
+.hdr-collab { font-size: 11px; font-family: var(--mono); opacity: 0.45; letter-spacing: 0.08em; }
+.hdr-right { font-size: 11px; font-family: var(--mono); opacity: 0.45; letter-spacing: 0.08em; }
+
+/* ── LAYOUT ── */
+.layout { display: flex; padding-top: 48px; }
+
+/* ── SIDEBAR NAV ── */
+.sidebar {
+  width: var(--nav-w);
+  flex-shrink: 0;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  padding: 32px 20px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+.sidebar a {
+  display: block;
+  font-size: 12px;
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--black);
+  text-decoration: none;
+  opacity: 0.35;
+  padding: 5px 0;
+  transition: opacity 0.15s;
+  text-transform: uppercase;
+}
+.sidebar a:hover, .sidebar a.active { opacity: 1; }
+
+/* ── MAIN ── */
+main { flex: 1; min-width: 0; }
+
+/* ── SECTIONS ── */
+section {
+  padding: 72px 48px;
+  border-bottom: 1px solid var(--border);
+}
+section:first-child { padding-top: 80px; }
+
+.sec-label {
+  font-size: 11px;
+  font-family: var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 32px;
+}
+
+.sec-h2 {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 28px;
+  max-width: 700px;
+}
+
+.sec-body {
+  font-size: 15px;
+  line-height: 1.72;
+  font-weight: 300;
+  max-width: 620px;
+  opacity: 0.75;
+}
+.sec-body p + p { margin-top: 16px; }
+
+/* ── HERO ── */
+#s-intro { padding-top: 80px; }
+.hero-title {
+  font-size: clamp(72px, 14vw, 180px);
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  line-height: 0.88;
+  margin-bottom: 48px;
+}
+.explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-family: var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 10px 20px;
+  margin-bottom: 60px;
+  transition: background 0.15s, color 0.15s;
+}
+.explore-btn:hover { background: var(--black); color: var(--bg); }
+.explore-btn::after { content: '↓'; }
+
+.intro-body {
+  font-size: 18px;
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 680px;
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
+
+/* ── IMAGE PLACEHOLDER ── */
+.img-ph {
+  background: #ddd;
+  background-image: repeating-linear-gradient(-45deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03) 1px, transparent 1px, transparent 8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.img-ph.dark {
+  background: #1a1a1a;
+  background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 1px, transparent 1px, transparent 8px);
+  color: rgba(255, 255, 255, 0.25);
+}
+.img-ph.mint {
+  background: var(--pistachio);
+  background-image: repeating-linear-gradient(-45deg, rgba(0,0,0,0.04), rgba(0,0,0,0.04) 1px, transparent 1px, transparent 8px);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* ── GRIDS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 2px; }
+
+/* ── STATEMENT / PULL QUOTE ── */
+.statement {
+  font-size: clamp(24px, 3.5vw, 42px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  max-width: 800px;
+  margin: 48px 0;
+  opacity: 0.85;
+}
+
+.pull-quote {
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  max-width: 900px;
+  margin: 56px 0;
+  font-style: italic;
+}
+
+/* ── COLOR PALETTE ── */
+.palette-section { margin: 40px 0; }
+.palette-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.palette-label::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: var(--pistachio);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.palette-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  margin-bottom: 4px;
+  max-width: 600px;
+}
+.swatch {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  position: relative;
+}
+.swatch-hex {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+.swatch.light-text .swatch-hex { color: rgba(255, 255, 255, 0.6); }
+
+/* ── LOGO DISPLAY ── */
+.logo-display {
+  background: var(--bg);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  border: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* ── SUBSECTION ── */
+.subsec { margin-top: 56px; }
+.subsec-label {
+  font-size: 11px;
+  font-family: var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── STATS ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 40px 0;
+  max-width: 700px;
+}
+.stat-num {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* ── RETAILER LOGO GRID ── */
+.retail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin: 24px 0;
+  max-width: 800px;
+}
+.retail-cell {
+  background: var(--bg);
+  aspect-ratio: 5/2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  text-align: center;
+  padding: 8px;
+}
+
+/* ── CUSTOMER QUOTES ── */
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+  max-width: 900px;
+}
+.quote-card {
+  border: 1px solid var(--border);
+  padding: 24px;
+}
+.quote-text {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.quote-trans {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0.5;
+}
+
+/* ── SUMMARY TABLE ── */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  max-width: 900px;
+}
+.summary-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 16px;
+  font-weight: 400;
+}
+.summary-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.summary-table tr:last-child td { border-bottom: none; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 11px;
+  opacity: 0.35;
+  letter-spacing: 0.08em;
+}
+
+/* ── SCROLL REVEAL ── */
+.r {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.r.in { opacity: 1; transform: none; }
+.r.d1 { transition-delay: 0.08s; }
+.r.d2 { transition-delay: 0.16s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  section { padding: 48px 24px; }
+  .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+  .quote-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr; }
+  .retail-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr-left">
+    <div class="hdr-brand">HAYAN</div>
+    <div class="hdr-collab">Co-founder · Design Director</div>
+  </div>
+  <div class="hdr-right">2021</div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <a href="#s-intro" class="active">Intro</a>
+    <a href="#s-brief">The brief</a>
+    <a href="#s-problem">The problem</a>
+    <a href="#s-insight">The insight</a>
+    <a href="#s-logo">Logo</a>
+    <a href="#s-identity">Identity</a>
+    <a href="#s-material">Material</a>
+    <a href="#s-product">Product</a>
+    <a href="#s-cmf">CMF</a>
+    <a href="#s-packaging">Packaging</a>
+    <a href="#s-system">System</a>
+    <a href="#s-outcome">Outcome</a>
+    <a href="#s-summary">Summary</a>
+  </nav>
+
+  <main>
+
+    <!-- ═══ 01 INTRO ═══ -->
+    <section id="s-intro">
+      <h1 class="hero-title r">HAYAN</h1>
+      <a href="#s-brief" class="explore-btn r d1">Explore</a>
+      <p class="intro-body r d1">
+        A sustainable lifestyle brand. Its first product is a biodegradable toothbrush — not because the brand is about toothbrushes, but because the toothbrush is one of the most overlooked objects in the daily ritual of waste.
+      </p>
+      <p class="intro-body r d2">
+        In Korea alone, 200 million toothbrushes are produced each year. None get recycled.
+      </p>
+      <div class="img-ph mint r" style="height:60vh;min-height:400px;margin-top:32px">
+        <span>Hero — adult + kids toothbrush in pistachio mint, bathroom counter</span>
+      </div>
+    </section>
+
+    <!-- ═══ 02 THE BRIEF ═══ -->
+    <section id="s-brief">
+      <div class="sec-label r">The brief, and the reframe</div>
+      <h2 class="sec-h2 r">The brief was a toothbrush.</h2>
+      <p class="sec-body r">
+        Econnect, a Korean PLA bioplastic manufacturer, asked me to design a biodegradable toothbrush that could compete with bamboo. I came back with a different answer: a better toothbrush wouldn't break out of the eco category. A different brand would.
+      </p>
+      <p class="sec-body r" style="margin-top:16px">
+        I came on as co-founder, leading creative direction end-to-end.
+      </p>
+      <div class="pull-quote r">
+        "They came for a toothbrush. I gave them a brand."
+      </div>
+    </section>
+
+    <!-- ═══ 03 THE PROBLEM ═══ -->
+    <section id="s-problem">
+      <div class="sec-label r">The problem</div>
+      <h2 class="sec-h2 r">The category was apologetic.</h2>
+      <p class="sec-body r">
+        Eco-friendly toothbrushes were almost all bamboo, prone to mold in humid bathrooms. They looked like a guilt purchase — earthy, muted, designed for the people who already cared.
+      </p>
+      <div class="grid-3 r" style="margin-top:32px">
+        <div class="img-ph" style="aspect-ratio:1"><span>Competitor 01 — bamboo</span></div>
+        <div class="img-ph" style="aspect-ratio:1"><span>Competitor 02 — bamboo</span></div>
+        <div class="img-ph" style="aspect-ratio:1"><span>Competitor 03 — bamboo</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ 04 THE INSIGHT ═══ -->
+    <section id="s-insight">
+      <div class="sec-label r">The insight</div>
+      <div class="pull-quote r">
+        What if a sustainable toothbrush didn't announce its sustainability?
+      </div>
+      <p class="sec-body r">
+        Reach the consumer who isn't already eco-conscious — but who would prefer a sustainable option if it didn't cost them anything in feel or form.
+      </p>
+    </section>
+
+    <!-- ═══ 05 LOGO ═══ -->
+    <section id="s-logo">
+      <div class="sec-label r">Logo</div>
+      <h2 class="sec-h2 r">A wordmark that whispers.</h2>
+      <p class="sec-body r">
+        Soft, lowercase, considered. The mark sits comfortably on a bathroom counter without competing for attention — designed to belong to the object, not announce it.
+      </p>
+      <div class="logo-display r">hayan</div>
+      <div class="grid-2 r">
+        <div class="img-ph" style="aspect-ratio:4/3"><span>Logo on packaging</span></div>
+        <div class="img-ph" style="aspect-ratio:4/3"><span>Logo at small scale</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ 06 IDENTITY ═══ -->
+    <section id="s-identity">
+      <div class="sec-label r">Brand identity</div>
+      <h2 class="sec-h2 r">The system.</h2>
+      <p class="sec-body r">
+        Typography, color, and voice — built to feel like home, not like an eco brand.
+      </p>
+      <div class="img-ph r" style="height:60vh;min-height:400px;margin-top:32px">
+        <span>Brand specimen — type lockup, color palette, applications</span>
+      </div>
+    </section>
+
+    <!-- ═══ 07 MATERIAL ═══ -->
+    <section id="s-material">
+      <div class="sec-label r">The material</div>
+      <h2 class="sec-h2 r">PLA, not bamboo.</h2>
+      <p class="sec-body r">
+        Corn-based bioplastic. Decomposes in 6–12 months versus 500+ years. 70% less carbon in manufacturing. Higher elasticity than conventional plastic — better for toothbrushes.
+      </p>
+      <p class="sec-body r" style="margin-top:16px">
+        It also doesn't absorb moisture. Bamboo's mold problem, gone.
+      </p>
+      <div class="grid-2 r" style="margin-top:32px">
+        <div class="img-ph" style="aspect-ratio:4/3"><span>PLA pellets</span></div>
+        <div class="img-ph" style="aspect-ratio:4/3"><span>Material detail — handle close-up</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ 08 PRODUCT DESIGN ═══ -->
+    <section id="s-product">
+      <div class="sec-label r">Product design</div>
+      <h2 class="sec-h2 r">Form driven by experience.</h2>
+      <p class="sec-body r">
+        Handle angled toward the bristle head — easier reach to back molars. Bristle count increased from 1,000 to 2,500 for a denser, softer brush. Children's version rounded to encourage lighter pressure — designed with how kids actually grip, not against it.
+      </p>
+      <div class="img-ph dark r" style="height:60vh;min-height:400px;margin-top:32px">
+        <span>Hero product render — adult toothbrush, side profile</span>
+      </div>
+      <div class="grid-4 r" style="margin-top:2px">
+        <div class="img-ph" style="aspect-ratio:1"><span>Handle profile</span></div>
+        <div class="img-ph" style="aspect-ratio:1"><span>Bristle close-up</span></div>
+        <div class="img-ph" style="aspect-ratio:1"><span>Adult vs kids</span></div>
+        <div class="img-ph" style="aspect-ratio:1"><span>Kids' rounded form</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ 09 CMF ═══ -->
+    <section id="s-cmf">
+      <div class="sec-label r">CMF</div>
+      <h2 class="sec-h2 r">Pistachio mint, not earth tones.</h2>
+      <p class="sec-body r">
+        Eco products at the time leaned earthy and apologetic. HAYAN launched in pistachio mint — a soft, gen-Z-coded shade that doesn't read as "eco." It reads as home. An object you leave out on the counter, not one you hide in a drawer.
+      </p>
+      <p class="sec-body r" style="margin-top:16px">
+        Adult and kids' toothbrushes shipped in the same pistachio at launch — a household system, not a single SKU.
+      </p>
+
+      <div class="palette-section r">
+        <div class="palette-label">Launch palette</div>
+        <div class="palette-row">
+          <div class="swatch" style="background:#b4dcc8"><span class="swatch-hex">#B4DCC8</span></div>
+          <div class="swatch" style="background:#e8e8e0"><span class="swatch-hex">#E8E8E0</span></div>
+          <div class="swatch" style="background:#f3f3f3"><span class="swatch-hex">#F3F3F3</span></div>
+          <div class="swatch light-text" style="background:#1a1a1a"><span class="swatch-hex">#1A1A1A</span></div>
+          <div class="swatch" style="background:#d4d4cc"><span class="swatch-hex">#D4D4CC</span></div>
+          <div class="swatch" style="background:#c8d8d0"><span class="swatch-hex">#C8D8D0</span></div>
+        </div>
+      </div>
+
+      <div class="img-ph mint r" style="height:60vh;min-height:400px;margin-top:32px">
+        <span>Mood shot — pistachio dominant, styled bathroom counter</span>
+      </div>
+      <div class="grid-2 r" style="margin-top:2px">
+        <div class="img-ph mint" style="aspect-ratio:4/3"><span>Adult + kids together</span></div>
+        <div class="img-ph mint" style="aspect-ratio:4/3"><span>Lifestyle detail</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ 10 PACKAGING ═══ -->
+    <section id="s-packaging">
+      <div class="sec-label r">Packaging</div>
+      <h2 class="sec-h2 r">Bold message, refined material.</h2>
+      <p class="sec-body r">
+        Eco packaging whispered. HAYAN announced itself — <em>I'm not plastic.</em> — in oversized type on uncoated kraft. Confidence without loudness.
+      </p>
+      <div class="img-ph r" style="height:60vh;min-height:400px;margin-top:32px">
+        <span>Hero packaging shot — "I'm not plastic."</span>
+      </div>
+      <div class="grid-3 r" style="margin-top:2px">
+        <div class="img-ph" style="aspect-ratio:4/3"><span>Kraft material detail</span></div>
+        <div class="img-ph" style="aspect-ratio:4/3"><span>Typography close-up</span></div>
+        <div class="img-ph" style="aspect-ratio:4/3"><span>Shelf comparison</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ 11 SYSTEM ═══ -->
+    <section id="s-system">
+      <div class="sec-label r">The system</div>
+      <h2 class="sec-h2 r">A product designed to come back.</h2>
+      <p class="sec-body r">
+        QR code on the packaging links to a return service. Used toothbrushes get mailed back. Subscription handles replenishment. The brand owns the full lifecycle.
+      </p>
+      <div class="img-ph r" style="height:55vh;min-height:380px;margin-top:32px">
+        <span>Lifecycle diagram — Buy → Use → Return → Recycle</span>
+      </div>
+    </section>
+
+    <!-- ═══ 12 OUTCOME ═══ -->
+    <section id="s-outcome">
+      <div class="sec-label r">Outcome</div>
+      <h2 class="sec-h2 r">The brand earned its sales without buying them.</h2>
+
+      <div class="stats-row r">
+        <div>
+          <div class="stat-num">1,495%</div>
+          <div class="stat-label">of crowdfunding goal</div>
+        </div>
+        <div>
+          <div class="stat-num">285</div>
+          <div class="stat-label">launch backers</div>
+        </div>
+        <div>
+          <div class="stat-num">15+</div>
+          <div class="stat-label">retail partners</div>
+        </div>
+      </div>
+
+      <div class="subsec r">
+        <div class="subsec-label">Retail</div>
+        <div class="retail-grid">
+          <div class="retail-cell">DDP Design Store</div>
+          <div class="retail-cell">MTL</div>
+          <div class="retail-cell">OBSCURA</div>
+          <div class="retail-cell">PARSNIPS</div>
+          <div class="retail-cell">MUSINSA</div>
+          <div class="retail-cell">29CM</div>
+          <div class="retail-cell">KAKAO Gift</div>
+          <div class="retail-cell">Shinsegae DF</div>
+          <div class="retail-cell">Ananti</div>
+          <div class="retail-cell">Hotel POCO</div>
+          <div class="retail-cell">Hyundai M Mall</div>
+          <div class="retail-cell">Breeze Archive</div>
+        </div>
+      </div>
+
+      <div class="subsec r">
+        <div class="subsec-label">Press</div>
+        <div class="grid-2">
+          <div class="img-ph" style="aspect-ratio:4/3"><span>Hypebae feature</span></div>
+          <div class="img-ph" style="aspect-ratio:4/3"><span>DDP Design Store profile</span></div>
+        </div>
+      </div>
+
+      <div class="subsec r">
+        <div class="subsec-label">What customers said</div>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote-text">"인생칫솔."</div>
+            <div class="quote-trans">The toothbrush of my life.</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">"Hay, Vitra 같은 브랜드 느낌."</div>
+            <div class="quote-trans">Feels like a Hay or Vitra brand.</div>
+          </div>
+        </div>
+        <p class="sec-body r" style="margin-top:32px">
+          The deepest signal: customers said HAYAN changed how they thought about <em>other</em> everyday objects in their homes. The toothbrush was the entry point. The shift was the goal.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ 13 SUMMARY ═══ -->
+    <section id="s-summary">
+      <div class="sec-label r">Summary</div>
+      <p class="sec-body r" style="margin-bottom:48px">
+        HAYAN began with a product brief and ended as a brand built around a single belief: caring for the planet shouldn't feel like a compromise. The toothbrush was the entry point. The shift in everyday consciousness was the goal.
+      </p>
+
+      <table class="summary-table r">
+        <thead>
+          <tr><th>Category</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:var(--mono);font-size:12px;opacity:0.55;width:160px">Role</td>
+            <td>Co-founder · Design Director</td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:12px;opacity:0.55">Year</td>
+            <td>2021</td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:12px;opacity:0.55">Scope</td>
+            <td>
+              <div class="tag-row">
+                <span class="tag">Brand strategy</span>
+                <span class="tag">Naming</span>
+                <span class="tag">Logo & identity</span>
+                <span class="tag">Product design</span>
+                <span class="tag">CMF</span>
+                <span class="tag">Packaging</span>
+                <span class="tag">Art direction</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:12px;opacity:0.55">Partner</td>
+            <td>Econnect (manufacturing & operations)</td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:12px;opacity:0.55">Closing</td>
+            <td style="font-style:italic;opacity:0.7">Sustainability without compromise. Beauty without apology.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-copy">© 2025 Hye Min Eom</div>
+      <div class="footer-copy">All rights reserved</div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+// SCROLLSPY
+const links = document.querySelectorAll('.sidebar a');
+const sections = document.querySelectorAll('section[id]');
+
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.sidebar a[href="#' + e.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-48px 0px -60% 0px' });
+
+sections.forEach(s => spy.observe(s));
+
+// SCROLL REVEAL
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.r').forEach(el => revObs.observe(el));
+</script>
+
+</body>
+</html>
